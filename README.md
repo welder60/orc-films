@@ -1,70 +1,142 @@
-# Getting Started with Create React App
+# Orc Films 🎥
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Orc Films é uma aplicação web desenvolvida em React que utiliza a API do [The Movie Database (TMDb)](https://www.themoviedb.org/) para exibir informações sobre filmes, como títulos em cartaz, populares, com maior nota e próximos lançamentos. Além disso, o projeto implementa funcionalidades como login, registro de usuários, e adição de filmes aos favoritos, tudo integrado ao **LocalStorage**.
 
-## Available Scripts
+Acesse a aplicação ao vivo: [Orc Films - Vercel](https://orc-films.vercel.app/)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Índice
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. [Funcionalidades](#funcionalidades)
+2. [Tecnologias Utilizadas](#tecnologias-utilizadas)
+3. [Instalação e Configuração](#instalação-e-configuração)
+4. [Estrutura do Projeto](#estrutura-do-projeto)
+5. [Contribuindo](#contribuindo)
+6. [Licença](#licença)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Funcionalidades
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Explorar filmes:**
+  - Listar filmes em cartaz, populares, com maior nota e lançamentos futuros.
+  - Detalhes completos de cada filme, incluindo sinopse, elenco e nota.
 
-### `npm run build`
+- **Sistema de usuários:**
+  - Registro e login utilizando o **LocalStorage**.
+  - Validação de credenciais no momento do login.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Favoritos:**
+  - Adicionar filmes aos favoritos do usuário logado.
+  - Listar e gerenciar os filmes favoritos para cada usuário.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tecnologias Utilizadas
 
-### `npm run eject`
+- **Front-end:** React.js, React Router, CSS3.
+- **Back-end (API):** [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api) para obter dados sobre filmes.
+- **Armazenamento local:** LocalStorage para registro de usuários e favoritos.
+- **Hospedagem:** Vercel ([Acesse aqui](https://orc-films.vercel.app/)).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Instalação e Configuração
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### **Pré-requisitos**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Certifique-se de ter o seguinte instalado em sua máquina:
+- [Node.js](https://nodejs.org/) v16 ou superior.
+- [Git](https://git-scm.com/).
 
-## Learn More
+### **Passos para Instalação**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/welder60/orc-films.git
+   cd orc-films
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-### Code Splitting
+3. Crie um arquivo `.env` na raiz do projeto com a seguinte variável de ambiente:
+   ```env
+   REACT_APP_API_KEY=YOUR_TMDB_API_KEY
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   Substitua `YOUR_TMDB_API_KEY` pela sua chave da API do TMDb.
 
-### Analyzing the Bundle Size
+4. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+5. Acesse a aplicação no navegador em [http://localhost:3000](http://localhost:3000).
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Estrutura do Projeto
 
-### Advanced Configuration
+Aqui está a estrutura atual do diretório `src/`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+src/
+├── api.js                 # Configuração do Axios para comunicação com a API TMDb
+├── App.css                # Estilos globais da aplicação
+├── App.js                 # Configuração principal do React Router
+├── Cards.css              # Estilos dos componentes de cards de filmes
+├── Cards.js               # Componente para exibir os filmes em formato de grid
+├── DetalhesFilme.css      # Estilos da página de detalhes de um filme
+├── DetalhesFilme.js       # Página de detalhes do filme com sinopse, elenco e botão de favoritos
+├── Header.css             # Estilos do header da aplicação
+├── Header.js              # Header com navegação para categorias e login
+├── index.css              # Estilos básicos globais
+├── index.js               # Ponto de entrada principal do React
+├── localStorageUtils.js   # Funções utilitárias para manipulação de usuários e favoritos no LocalStorage
+├── Login.css              # Estilos para a página de login
+├── Login.js               # Página de login com validação
+├── logo.svg               # Logotipo da aplicação
+├── PaginaInicial.css      # Estilos para a página inicial
+├── PaginaInicial.js       # Página inicial com listagem de filmes por categoria
+├── Registro.css           # Estilos para a página de registro de usuário
+├── Registro.js            # Página para registrar novos usuários
+├── reportWebVitals.js     # Métricas de desempenho do React
+```
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contribuindo
 
-### `npm run build` fails to minify
+Contribuições são sempre bem-vindas! Siga os passos abaixo para contribuir:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Faça um fork do repositório.
+2. Crie uma branch para sua feature:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Commit suas alterações:
+   ```bash
+   git commit -m "Minha nova feature"
+   ```
+4. Envie para o repositório remoto:
+   ```bash
+   git push origin minha-feature
+   ```
+5. Abra um Pull Request no repositório principal.
+
+---
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+### **Links Importantes**
+- Repositório: [Orc Films no GitHub](https://github.com/welder60/orc-films)
+- Aplicação ao vivo: [Orc Films na Vercel](https://orc-films.vercel.app/) 
+
