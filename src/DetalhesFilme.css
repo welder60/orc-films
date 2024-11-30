@@ -1,0 +1,73 @@
+.detalhes-filme {
+  padding: 2rem;
+  color: #fff;
+  background-color: #000;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #35d46a;
+}
+
+.conteudo-detalhes {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.poster img {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.informacoes {
+  max-width: 600px;
+}
+
+.informacoes h2 {
+  font-size: 2rem;
+  color: #35d46a;
+}
+
+.informacoes p {
+  margin: 0.5rem 0;
+}
+
+.botao-favoritos {
+  background-color: #35d46a;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.botao-favoritos:hover {
+  background-color: #2eae59;
+}
+
+.elenco {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.ator {
+  text-align: center;
+  max-width: 120px;
+}
+
+.ator img {
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ator p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}

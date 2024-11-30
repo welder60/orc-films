@@ -1,0 +1,37 @@
+.filmes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas de tamanhos iguais */
+  gap: 1.5rem; /* Espaçamento entre os cards */
+  padding: 2rem; /* Espaçamento interno */
+}
+
+.filmes div {
+  background-color: #1c1c1c; /* Cor de fundo dos cards */
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra */
+  transition: transform 0.3s ease;
+}
+
+.filmes div:hover {
+  transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.filmes img {
+  width: 100%; /* Faz a imagem ocupar todo o card */
+  height: auto;
+  display: block;
+  border-bottom: 1px solid #333; /* Linha para separar imagem do título */
+}
+
+.filmes h3 {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.grade-cards {
+  margin: 0;
+  padding: 2rem; /* Adiciona espaçamento ao redor */
+}

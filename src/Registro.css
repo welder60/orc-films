@@ -1,0 +1,74 @@
+/* Estilo para a página de registro */
+body {
+  background-color: #000; /* Fundo preto */
+  color: #fff; /* Texto branco */
+  font-family: Arial, sans-serif; /* Fonte padrão */
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: #35d46a; /* Verde do título */
+  margin-bottom: 2rem;
+}
+
+form {
+  background-color: #1c1c1c; /* Fundo do formulário */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra para o formulário */
+  width: 300px;
+}
+
+form div {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+form input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #2e2e2e;
+  color: #fff;
+}
+
+form input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #35d46a; /* Sombra verde ao focar */
+}
+
+form button {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #35d46a;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #2eae59;
+}
+
+p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #35d46a;
+  text-align: center;
+}
