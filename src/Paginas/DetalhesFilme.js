@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { buscarDetalhesFilme } from "./api";
-import { salvarFilmeFavorito } from "./localStorageUtils";
-import "./DetalhesFilme.css"; // Arquivo de estilos
+import { buscarDetalhesFilme } from "../api/api";
+import { salvarFilmeFavorito } from "../api/localStorageUtils";
+import "../Paginas/DetalhesFilme.css"; // Arquivo de estilos
 
 function DetalhesFilme() {
   const { id } = useParams(); // Obtém o ID do filme da URL

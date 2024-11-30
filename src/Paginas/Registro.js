@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { registrarUsuario } from "./localStorageUtils";
+import { registrarUsuario } from "../api/localStorageUtils";
 import "./Registro.css";
 
 function Registro() {

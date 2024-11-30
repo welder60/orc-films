@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./Header";
-import PaginaInicial from "./PaginaInicial";
-import DetalhesFilme from "./DetalhesFilme";
-import Login from "./Login";
-import Registro from "./Registro";
+import PaginaInicial from "../Paginas/PaginaInicial";
+import DetalhesFilme from "../Paginas/DetalhesFilme";
+import Login from "../Paginas/Login";
+import Registro from "../Paginas/Registro";
 
 function App() {
   return (
