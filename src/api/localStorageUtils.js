@@ -6,7 +6,7 @@ export const registrarUsuario = (email, senha) => {
     return { sucesso: false, mensagem: "Usuário já existe!" };
   }
 
-  usuarios[email] = { senha, favoritos: [] }; // Adiciona o usuário com uma lista vazia de favoritos
+  usuarios[email] = { senha, favoritos: [] }; // Inicializa o usuário com favoritos vazio
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
   return { sucesso: true, mensagem: "Usuário registrado com sucesso!" };
 };
@@ -26,7 +26,6 @@ export const validarUsuario = (email, senha) => {
   return { sucesso: true, mensagem: "Login bem-sucedido!" };
 };
 
-// Função para salvar filmes favoritos
 export const salvarFilmeFavorito = (email, filme) => {
   const usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
 
@@ -35,13 +34,18 @@ export const salvarFilmeFavorito = (email, filme) => {
   }
 
   const favoritos = usuarios[email].favoritos || [];
-  const filmeJaAdicionado = favoritos.find((f) => f.id === filme.id);
+  const filmeJaAdicionado = favoritos.some((f) => f.id === filme.id);
 
   if (filmeJaAdicionado) {
     return { sucesso: false, mensagem: "Filme já está nos favoritos!" };
   }
 
-  favoritos.push(filme); // Adiciona o filme aos favoritos
+  favoritos.push({
+    id: filme.id,
+    title: filme.title,
+    poster_path: filme.poster_path,
+    release_date: filme.release_date,
+  }); // Salva apenas as informações necessárias do filme
   usuarios[email].favoritos = favoritos;
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
   return { sucesso: true, mensagem: "Filme adicionado aos favoritos!" };
@@ -54,4 +58,20 @@ export const obterFavoritos = (email) => {
     return [];
   }
   return usuarios[email].favoritos || [];
+};
+
+
+export const removerFilmeFavorito = (email, filme) => {
+  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+
+  if (!usuarios[email]) {
+    return { sucesso: false, mensagem: "Usuário não encontrado!" };
+  }
+
+  const favoritos = usuarios[email].favoritos || [];
+  const novosFavoritos = favoritos.filter((f) => f.id !== filme.id);
+
+  usuarios[email].favoritos = novosFavoritos;
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  return { sucesso: true, mensagem: "Filme removido dos favoritos!" };
 };

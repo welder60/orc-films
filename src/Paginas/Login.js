@@ -3,9 +3,9 @@ import "./Login.css"; // Arquivo de estilos
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [logado, setLogado] = useState(false);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [mensagem, setMensagem] = useState(""); // Estado para mensagens de feedback
   const navigate = useNavigate();
 
   const autenticarUsuario = (email, senha) => {
@@ -13,7 +13,7 @@ function Login() {
     const usuario = usuarios[email];
 
     if (usuario && usuario.senha === senha) {
-      return usuario;
+      return { email, ...usuario }; // Retorna o objeto com o email incluído
     }
 
     return null;
@@ -22,19 +22,17 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const autenticacao = autenticarUsuario(email, senha);
-    
+
     if (autenticacao) {
-      setLogado(true);
       localStorage.setItem("logado", "true");
-      localStorage.setItem("usuario", JSON.stringify(autenticacao));
-      console.log("Login bem-sucedido!");
-      navigate("/");
-      
+      localStorage.setItem("usuario", JSON.stringify(autenticacao)); // Salva o objeto completo
+      setMensagem("Login bem-sucedido!");
+      navigate("/?categoria=favoritos"); // Redireciona para a página inicial
+	  window.location.reload(); // Recarrega a página
     } else {
-      console.log("Login mal-sucedido.");
+      setMensagem("Email ou senha inválidos."); // Exibe mensagem de erro
     }
   };
-  
 
   return (
     <div className="pagina-login">
@@ -63,6 +61,7 @@ function Login() {
         <button type="submit" className="botao-login">
           Entrar
         </button>
+        {mensagem && <p className="mensagem-feedback">{mensagem}</p>} {/* Exibe mensagem */}
       </form>
     </div>
   );

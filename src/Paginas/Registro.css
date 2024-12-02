@@ -1,42 +1,39 @@
-/* Estilo para a página de registro */
-body {
-  background-color: #000; /* Fundo preto */
-  color: #fff; /* Texto branco */
-  font-family: Arial, sans-serif; /* Fonte padrão */
-}
-
-div {
+.pagina-registro {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  background-color: #000; /* Cor de fundo */
+  color: #fff;
+  font-family: Arial, sans-serif;
 }
 
-h1 {
-  color: #35d46a; /* Verde do título */
+.registro-titulo {
+  color: #35d46a;
   margin-bottom: 2rem;
 }
 
-form {
+.registro-form {
   background-color: #1c1c1c; /* Fundo do formulário */
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra para o formulário */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   width: 300px;
 }
 
-form div {
-  margin-bottom: 1.5rem;
+.registro-campo {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.5rem;
 }
 
-form label {
+.registro-campo label {
   margin-bottom: 0.5rem;
   font-size: 1rem;
 }
 
-form input {
+.registro-campo input {
   padding: 0.5rem;
   border: none;
   border-radius: 5px;
@@ -45,12 +42,12 @@ form input {
   color: #fff;
 }
 
-form input:focus {
+.registro-campo input:focus {
   outline: none;
-  box-shadow: 0 0 5px #35d46a; /* Sombra verde ao focar */
+  box-shadow: 0 0 5px #35d46a;
 }
 
-form button {
+.registro-botao {
   width: 100%;
   padding: 0.5rem;
   border: none;
@@ -62,13 +59,20 @@ form button {
   cursor: pointer;
 }
 
-form button:hover {
+.registro-botao:hover {
   background-color: #2eae59;
 }
 
-p {
+.registro-mensagem {
   margin-top: 1rem;
   font-size: 1rem;
-  color: #35d46a;
   text-align: center;
+}
+
+.registro-mensagem.success {
+  color: green; /* Cor para mensagens de sucesso */
+}
+
+.registro-mensagem.error {
+  color: red; /* Cor para mensagens de erro */
 }

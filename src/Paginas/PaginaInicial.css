@@ -1,37 +1,82 @@
 .filmes {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas de tamanhos iguais */
-  gap: 1.5rem; /* Espaçamento entre os cards */
-  padding: 2rem; /* Espaçamento interno */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta automaticamente para caber no espaço disponível */
+  gap: 2rem; /* Maior espaçamento entre os cards */
+  padding: 2rem 3rem; /* Adiciona espaçamento interno e lateral */
 }
 
 .filmes div {
   background-color: #1c1c1c; /* Cor de fundo dos cards */
-  border-radius: 10px;
+  border-radius: 12px; /* Bordas mais suaves */
   text-align: center;
   color: #fff;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra */
-  transition: transform 0.3s ease;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4); /* Sombra mais intensa */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .filmes div:hover {
-  transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+  transform: scale(1.08); /* Efeito de zoom ao passar o mouse */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.6); /* Sombra mais destacada no hover */
 }
 
 .filmes img {
   width: 100%; /* Faz a imagem ocupar todo o card */
-  height: auto;
-  display: block;
+  height: 200px; /* Define uma altura fixa para as imagens */
+  object-fit: cover; /* Mantém proporções e preenche o espaço */
   border-bottom: 1px solid #333; /* Linha para separar imagem do título */
 }
 
 .filmes h3 {
-  padding: 0.5rem;
-  font-size: 1rem;
+  padding: 1rem 0.5rem; /* Mais espaçamento ao redor do título */
+  font-size: 1.2rem; /* Aumenta o tamanho do texto */
+  line-height: 1.4; /* Melhor legibilidade */
 }
 
 .grade-cards {
-  margin: 0;
-  padding: 2rem; /* Adiciona espaçamento ao redor */
+  max-width: 800px; /* Limita a largura máxima da grade */
+  padding: 2rem; /* Adiciona espaçamento interno */
+}
+
+
+
+.pagina-inicial input[type="text"] {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Bordas mais suaves */
+  width: 60%; /* Largura maior para o campo de busca */
+  margin: 200 auto;
+}
+
+.botoes-ordenacao {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.botoes-ordenacao button {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  border-radius: 8px; /* Bordas mais suaves */
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.botoes-ordenacao button.ativo {
+  background-color: #35d46a;
+  color: white;
+  border: 1px solid #35d46a;
+}
+
+.botoes-ordenacao button:hover {
+  background-color: #2eae59;
+  color: white;
+}
+
+.pagina-inicial .opcoes {
+  display: flex;
+  justify-content: space-between; /* Espaça os elementos igualmente */
+  align-items: center; /* Alinha os elementos verticalmente */
+  flex-wrap: wrap; /* Permite que os itens "quebrem" em linhas se necessário */
+  gap: 5rem; /* Espaçamento entre os elementos */
 }

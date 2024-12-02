@@ -62,3 +62,14 @@ h1 {
 .botao-login:hover {
   background-color: #2eae59;
 }
+
+.mensagem-feedback {
+  margin-top: 1rem;
+  color: red; /* Cor para mensagens de erro */
+  font-size: 1rem;
+  text-align: center;
+}
+
+.mensagem-feedback.success {
+  color: green; /* Cor para mensagens de sucesso */
+}
