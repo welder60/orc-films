@@ -1,56 +1,85 @@
-# Orc Films 🎥
+### **Orc Films**
 
-Orc Films é uma aplicação web desenvolvida em React que utiliza a API do [The Movie Database (TMDb)](https://www.themoviedb.org/) para exibir informações sobre filmes, como títulos em cartaz, populares, com maior nota e próximos lançamentos. Além disso, o projeto implementa funcionalidades como login, registro de usuários, e adição de filmes aos favoritos, tudo integrado ao **LocalStorage**.
-
-Acesse a aplicação ao vivo: [Orc Films - Vercel](https://orc-films.vercel.app/)
+Bem-vindo ao **Orc Films**, um projeto React que consome a API do TMDb para listar filmes populares, em cartaz, com maior nota, em breve e favoritos. Este projeto inclui funcionalidades de registro, login e gerenciamento de favoritos. A interface é estilizada e responsiva.
 
 ---
 
-## Índice
+### **Tecnologias Utilizadas**
 
-1. [Funcionalidades](#funcionalidades)
-2. [Tecnologias Utilizadas](#tecnologias-utilizadas)
-3. [Instalação e Configuração](#instalação-e-configuração)
-4. [Estrutura do Projeto](#estrutura-do-projeto)
-5. [Contribuindo](#contribuindo)
-6. [Licença](#licença)
-
----
-
-## Funcionalidades
-
-- **Explorar filmes:**
-  - Listar filmes em cartaz, populares, com maior nota e lançamentos futuros.
-  - Detalhes completos de cada filme, incluindo sinopse, elenco e nota.
-
-- **Sistema de usuários:**
-  - Registro e login utilizando o **LocalStorage**.
-  - Validação de credenciais no momento do login.
-
-- **Favoritos:**
-  - Adicionar filmes aos favoritos do usuário logado.
-  - Listar e gerenciar os filmes favoritos para cada usuário.
+- **React**: Biblioteca JavaScript para construção da interface.
+- **Axios**: Para chamadas HTTP.
+- **React Router DOM**: Para navegação entre páginas.
+- **CSS**: Estilização personalizada para componentes e páginas.
+- **TMDb API**: Fonte de dados para os filmes.
 
 ---
 
-## Tecnologias Utilizadas
+### **Estrutura do Projeto**
 
-- **Front-end:** React.js, React Router, CSS3.
-- **Back-end (API):** [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api) para obter dados sobre filmes.
-- **Armazenamento local:** LocalStorage para registro de usuários e favoritos.
-- **Hospedagem:** Vercel ([Acesse aqui](https://orc-films.vercel.app/)).
+#### **Raiz do Projeto**
+| Nome                 | Descrição                                    |
+|----------------------|--------------------------------------------|
+| `api/`              | Contém arquivos para comunicação com a API e gerenciamento do LocalStorage. |
+| `Componentes/`      | Componentes reutilizáveis como cabeçalho e cards.          |
+| `Paginas/`          | Contém páginas do aplicativo (Registro, Login, Perfil, etc.). |
+| `index.css`         | Estilo global da aplicação.                   |
+| `index.js`          | Ponto de entrada da aplicação React.           |
+| `logo.svg`          | Logotipo do projeto.                          |
+| `reportWebVitals.js`| Utilitário para medir desempenho.              |
+
+#### **Diretório `api/`**
+| Nome                  | Descrição                                  |
+|-----------------------|------------------------------------------|
+| `api.js`             | Configuração do Axios e funções para chamadas à API do TMDb. |
+| `localStorageUtils.js`| Funções para gerenciamento de dados no LocalStorage. |
+
+#### **Diretório `Componentes/`**
+| Nome                 | Descrição                                   |
+|----------------------|-------------------------------------------|
+| `App.css`           | Estilos principais da aplicação.            |
+| `App.js`            | Estrutura principal com rotas e navegação. |
+| `Cards.css`         | Estilização para exibição dos filmes.       |
+| `Cards.js`          | Componente para renderizar cards de filmes. |
+| `Header.css`        | Estilização do cabeçalho.                   |
+| `Header.js`         | Componente de navegação da aplicação.       |
+
+#### **Diretório `Paginas/`**
+| Nome                 | Descrição                                   |
+|----------------------|-------------------------------------------|
+| `DetalhesFilme.css` | Estilização da página de detalhes do filme. |
+| `DetalhesFilme.js`  | Página com informações detalhadas de um filme. |
+| `Login.css`         | Estilização da página de login.             |
+| `Login.js`          | Página de autenticação do usuário.          |
+| `PaginaInicial.css` | Estilização da página inicial.              |
+| `PaginaInicial.js`  | Página inicial com listagem de filmes por categoria. |
+| `Perfil.css`        | Estilização da página de perfil.            |
+| `Perfil.js`         | Página de gerenciamento de conta e favoritos. |
+| `Registro.css`      | Estilização da página de registro.          |
+| `Registro.js`       | Página de cadastro de usuários.             |
 
 ---
 
-## Instalação e Configuração
+### **Principais Funcionalidades**
 
-### **Pré-requisitos**
+1. **Registro e Login**:
+   - Usuários podem criar contas e fazer login para acessar recursos exclusivos.
 
-Certifique-se de ter o seguinte instalado em sua máquina:
-- [Node.js](https://nodejs.org/) v16 ou superior.
-- [Git](https://git-scm.com/).
+2. **Favoritos**:
+   - Filmes podem ser adicionados ou removidos da lista de favoritos. Os dados são salvos no LocalStorage.
 
-### **Passos para Instalação**
+3. **Ordenação e Busca**:
+   - Resultados podem ser ordenados por nome ou data de lançamento.
+   - Busca por filmes pelo nome.
+
+4. **Detalhes do Filme**:
+   - Exibição de informações detalhadas como elenco, sinopse e nota.
+
+5. **Responsividade**:
+   - A interface adapta-se a diferentes tamanhos de tela.
+
+---
+
+### **Como Executar o Projeto**
 
 1. Clone o repositório:
    ```bash
@@ -63,80 +92,47 @@ Certifique-se de ter o seguinte instalado em sua máquina:
    npm install
    ```
 
-3. Crie um arquivo `.env` na raiz do projeto com a seguinte variável de ambiente:
-   ```env
-   REACT_APP_API_KEY=YOUR_TMDB_API_KEY
+3. Crie um arquivo `.env` na raiz com a chave da API do TMDb:
+   ```
+   REACT_APP_API_KEY=SUA_API_KEY_AQUI
    ```
 
-   Substitua `YOUR_TMDB_API_KEY` pela sua chave da API do TMDb.
-
-4. Inicie o servidor de desenvolvimento:
+4. Execute o projeto:
    ```bash
    npm start
    ```
 
-5. Acesse a aplicação no navegador em [http://localhost:3000](http://localhost:3000).
+5. Acesse no navegador:
+   ```
+   http://localhost:3000
+   ```
 
 ---
 
-## Estrutura do Projeto
+### **Acesse o Projeto Online**
 
-Aqui está a estrutura atual do diretório `src/`:
-
-```
-src/
-├── api.js                 # Configuração do Axios para comunicação com a API TMDb
-├── App.css                # Estilos globais da aplicação
-├── App.js                 # Configuração principal do React Router
-├── Cards.css              # Estilos dos componentes de cards de filmes
-├── Cards.js               # Componente para exibir os filmes em formato de grid
-├── DetalhesFilme.css      # Estilos da página de detalhes de um filme
-├── DetalhesFilme.js       # Página de detalhes do filme com sinopse, elenco e botão de favoritos
-├── Header.css             # Estilos do header da aplicação
-├── Header.js              # Header com navegação para categorias e login
-├── index.css              # Estilos básicos globais
-├── index.js               # Ponto de entrada principal do React
-├── localStorageUtils.js   # Funções utilitárias para manipulação de usuários e favoritos no LocalStorage
-├── Login.css              # Estilos para a página de login
-├── Login.js               # Página de login com validação
-├── logo.svg               # Logotipo da aplicação
-├── PaginaInicial.css      # Estilos para a página inicial
-├── PaginaInicial.js       # Página inicial com listagem de filmes por categoria
-├── Registro.css           # Estilos para a página de registro de usuário
-├── Registro.js            # Página para registrar novos usuários
-├── reportWebVitals.js     # Métricas de desempenho do React
-```
+O projeto está hospedado no Vercel:
+[Orc Films - Demo Online](https://orc-films.vercel.app/)
 
 ---
 
-## Contribuindo
+### **Contribuições**
 
-Contribuições são sempre bem-vindas! Siga os passos abaixo para contribuir:
+Contribuições são bem-vindas! Siga os passos abaixo para enviar melhorias:
 
 1. Faça um fork do repositório.
-2. Crie uma branch para sua feature:
+2. Crie um branch para sua funcionalidade:
    ```bash
-   git checkout -b minha-feature
+   git checkout -b minha-funcionalidade
    ```
-3. Commit suas alterações:
+3. Commit suas mudanças:
    ```bash
-   git commit -m "Minha nova feature"
+   git commit -m "Adicionei uma nova funcionalidade"
    ```
-4. Envie para o repositório remoto:
+4. Faça um push para o branch:
    ```bash
-   git push origin minha-feature
+   git push origin minha-funcionalidade
    ```
-5. Abra um Pull Request no repositório principal.
+5. Abra um Pull Request.
 
 ---
-
-## Licença
-
-Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-### **Links Importantes**
-- Repositório: [Orc Films no GitHub](https://github.com/welder60/orc-films)
-- Aplicação ao vivo: [Orc Films na Vercel](https://orc-films.vercel.app/) 
-

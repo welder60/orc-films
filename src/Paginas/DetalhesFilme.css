@@ -8,7 +8,7 @@
 .conteudo-detalhes {
   display: flex;
   gap: 2rem;
-  margin-top: 2rem;
+  margin: 2rem;
   flex-wrap: wrap; /* Permite que os elementos se ajustem em telas menores */
 }
 
@@ -26,7 +26,7 @@
 
 .informacoes h2 {
   font-size: 2rem;
-  color: #35d46a; /* Verde destaque */
+  color: #45E32D; /* Verde destaque */
 }
 
 .informacoes p {
@@ -34,7 +34,7 @@
 }
 
 .botao-favoritos {
-  background-color: #35d46a;
+  background-color: #45E32D;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;

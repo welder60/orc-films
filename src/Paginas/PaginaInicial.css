@@ -35,7 +35,7 @@
 
 .grade-cards {
   max-width: 800px; /* Limita a largura máxima da grade */
-  padding: 2rem; /* Adiciona espaçamento interno */
+  padding: 20rem; /* Adiciona espaçamento interno */
 }
 
 
@@ -50,7 +50,6 @@
 
 .botoes-ordenacao {
   display: flex;
-  gap: 1.2rem;
 }
 
 .botoes-ordenacao button {
@@ -63,9 +62,9 @@
 }
 
 .botoes-ordenacao button.ativo {
-  background-color: #35d46a;
+  background-color: #45E32D;
   color: white;
-  border: 1px solid #35d46a;
+  border: 1px solid #45E32D;
 }
 
 .botoes-ordenacao button:hover {
@@ -73,10 +72,13 @@
   color: white;
 }
 
-.pagina-inicial .opcoes {
+.opcoes {
   display: flex;
   justify-content: space-between; /* Espaça os elementos igualmente */
   align-items: center; /* Alinha os elementos verticalmente */
   flex-wrap: wrap; /* Permite que os itens "quebrem" em linhas se necessário */
-  gap: 5rem; /* Espaçamento entre os elementos */
+  gap: 2rem; /* Espaçamento entre os elementos */
+  
+  justify-content: space-between;
+  align-items: center;
 }

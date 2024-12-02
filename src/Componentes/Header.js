@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
+import logo from "../assets/logo.webp"; // Caminho para o logo
 
 function Header() {
   const [logado, setLogado] = useState(false);
@@ -12,30 +13,32 @@ function Header() {
   }, []);
 
   const handleLogout = () => {
-    // Remove o estado de login do LocalStorage e atualiza o estado
     localStorage.removeItem("logado");
     setLogado(false);
-    navigate("/"); // Redireciona para a página de login
+    navigate("/");
   };
 
   return (
     <header className="header">
-      <div className="logo">
-        <h1>Orc' Films</h1>
-      </div>
+      <Link to="/" className="logo-container"> {/* Torna a logo um link para a página inicial */}
+        <img src={logo} alt="Logo Orc Films" className="logo-imagem" />
+        <h1 className="logo-texto">
+          Orc'<p /><span className="logo-texto-verde">Films</span>
+        </h1>
+      </Link>
       <nav className="navegacao">
         <Link to="/?categoria=favoritos">Favoritos</Link>
         <Link to="/?categoria=em-cartaz">Em cartaz</Link>
         <Link to="/?categoria=maior-nota">Maior nota</Link>
         <Link to="/?categoria=populares">Populares</Link>
         <Link to="/?categoria=em-breve">Em breve</Link>
-      
+
         {!logado && (
           <>
+			<Link to="/entrar">Entrar</Link>
             <Link to="/cadastrar" className="botao-conta">
               Criar conta
-            </Link>
-            <Link to="/entrar">Entrar</Link>
+            </Link>            
           </>
         )}
 
