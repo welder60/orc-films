@@ -3,6 +3,7 @@ import { registrarUsuario } from "../api/localStorageUtils";
 import "./Registro.css";
 
 function Registro() {
+  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [mensagem, setMensagem] = useState("");
@@ -10,7 +11,7 @@ function Registro() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const resultado = registrarUsuario(email, senha);
+    const resultado = registrarUsuario(nome,email, senha);
     setMensagem(resultado.mensagem);
     setTipoMensagem(resultado.sucesso ? "success" : "error");
   };
@@ -19,6 +20,16 @@ function Registro() {
     <div className="pagina-registro">
       <h1 className="registro-titulo">Registrar</h1>
       <form onSubmit={handleSubmit} className="registro-form">
+      <div className="registro-campo">
+          <label htmlFor="email">Nome:</label>
+          <input
+            type="text"
+            id="nome"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            required
+          />
+        </div>
         <div className="registro-campo">
           <label htmlFor="email">Email:</label>
           <input

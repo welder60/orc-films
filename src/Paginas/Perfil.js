@@ -5,6 +5,8 @@ import "./Perfil.css";
 function Perfil() {
   const [usuario, setUsuario] = useState(null);
   const [novaSenha, setNovaSenha] = useState("");
+  const [novoNome, setNovoNome] = useState("");
+  const [novoEmail, setNovoEmail] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,11 +19,60 @@ function Perfil() {
     }
   }, [navigate]);
 
-  const handleSair = () => {
-    localStorage.removeItem("usuario");
-    localStorage.removeItem("logado");
-    navigate("/");
+  // const handleSair = () => {
+  //   localStorage.removeItem("usuario");
+  //   localStorage.removeItem("logado");
+  //   navigate("/");
+  // };
+
+  const handleMudarNome = () => {
+    if (novoNome.trim() == ""){
+      alert("É obrigatório ter um nome.");
+      return;
+    }
+
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+    if (usuarios[usuario.email]) {
+      usuarios[usuario.email].nome = novoNome; // Atualiza a senha no LocalStorage
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+      // Atualiza o usuário logado
+      setUsuario({ ...usuario, nome: novoNome });
+      setNovoNome(""); // Limpa o campo de entrada
+      alert("Nome alterado com sucesso!");
+    } else {
+      alert("Erro ao atualizar nome.");
+    }
+
+  }
+
+  const handleMudarEmail = () => {
+    if (novoEmail.trim() === "") {
+      alert("É obrigatório preencher este campo para editar o email.");
+      return;
+    }
+  
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
+  
+    if (usuarios[usuario.email]) {
+      const dadosUsuario = usuarios[usuario.email];
+  
+      usuarios[novoEmail] = { ...dadosUsuario, email: novoEmail };
+      delete usuarios[usuario.email];
+  
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  
+      const usuarioAtualizado = { ...usuario, email: novoEmail };
+      setUsuario(usuarioAtualizado);
+      localStorage.setItem("usuario", JSON.stringify(usuarioAtualizado));
+  
+      setNovoEmail("");
+      alert("Email alterado com sucesso!");
+    } else {
+      alert("Erro ao atualizar email. Usuário não encontrado.");
+    }
   };
+  
 
   const handleMudarSenha = () => {
     if (novaSenha.trim() === "") {
@@ -69,13 +120,35 @@ function Perfil() {
 
   return (
     <div className="perfil">
-      <h1>Bem-vindo, {usuario.email}!</h1>
-      <p><strong>Email:</strong> {usuario.email}</p>
-
+      <h1>Bem-vindo, {usuario.nome}!</h1>
       <div className="acoes">
-        <button onClick={handleSair}>Sair</button>
-        
-        <div className="mudar-senha">
+        <div className="container-inputs">
+          <label htmlFor="novoNome">Nome:</label>
+          <input
+            type="text"
+            id="novoNome"
+            value={novoNome}
+            onChange={(e) => setNovoNome(e.target.value)}
+            placeholder={usuario.nome}
+          />
+          <button onClick={handleMudarNome}>Alterar nome</button>
+        </div>
+
+        <div className="container-inputs">
+          <label htmlFor="novoEmail">Email:</label>
+          <input
+            type="email"
+            id="novoEmail"
+            value={novoEmail}
+            onChange={(e) => setNovoEmail(e.target.value)}
+            placeholder={usuario.email}
+          />
+          <button onClick={handleMudarEmail}>Alterar email</button>
+        </div>
+
+
+
+        <div className="container-inputs">
           <label htmlFor="novaSenha">Nova Senha:</label>
           <input
             type="password"
@@ -94,5 +167,6 @@ function Perfil() {
     </div>
   );
 }
+
 
 export default Perfil;

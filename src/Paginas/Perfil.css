@@ -37,19 +37,20 @@ button:hover {
   background-color: #2eae59;
 }
 
-.mudar-senha {
+.container-inputs {
   display: flex;
-  flex-direction: column;
+  height: 100%;
+  flex-direction: row;
   align-items: center;
   gap: 0.5rem;
 }
 
-.mudar-senha input {
+.container-inputs input {
   padding: 0.5rem;
   border: none;
   border-radius: 5px;
-  font-size: 1rem;
-  width: 200px;
+  background: #0e0e0e;
+  color: gray;
 }
 
 .excluir-conta {

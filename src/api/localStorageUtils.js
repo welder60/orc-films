@@ -1,12 +1,12 @@
 // Função para registrar um novo usuário
-export const registrarUsuario = (email, senha) => {
+export const registrarUsuario = (nome, email, senha) => {
   const usuarios = JSON.parse(localStorage.getItem("usuarios")) || {};
 
   if (usuarios[email]) {
     return { sucesso: false, mensagem: "Usuário já existe!" };
   }
 
-  usuarios[email] = { senha, favoritos: [] }; // Inicializa o usuário com favoritos vazio
+  usuarios[email] = { nome,email,senha, favoritos: [] }; // Inicializa o usuário com favoritos vazio
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
   return { sucesso: true, mensagem: "Usuário registrado com sucesso!" };
 };
